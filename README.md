@@ -55,7 +55,7 @@ python -m roughness_prediction.cli train --metadata data/manifest.csv --base-dir
 
 Check the generated manifest before training. Public machining datasets vary in folder naming, spreadsheet columns, and whether roughness values are repeated per parameter combination or per individual signal.
 
-## What This Demonstrates
+## Roughness workflow
 
 - Signal feature extraction for machining audio or vibration traces, including RMS, crest factor, zero-crossing rate, spectral centroid, dominant frequency, rolloff, and high/low band power.
 - A reproducible regression workflow that predicts surface roughness (`Ra`) from signal features plus optional process parameters.
@@ -63,7 +63,7 @@ Check the generated manifest before training. Public machining datasets vary in 
 - Result reporting suitable for a portfolio or engineering prototype: metrics CSV, prediction table, feature importance CSV, and plot screenshots.
 - A practical path from public raw signal data to a trainable manifest without storing large research datasets in Git.
 
-## Limitations and Next Steps
+## Dataset limitations
 
 - The committed screenshots use a synthetic demo dataset, not the full public Mendeley dataset. Use the real download before making performance claims.
 - The `.au` reader covers common Sun/NeXT AU encodings. For unusual audio encodings, install an audio library such as `soundfile` or convert files to WAV.
