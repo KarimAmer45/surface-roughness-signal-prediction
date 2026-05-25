@@ -55,7 +55,7 @@ python -m roughness_prediction.cli train --metadata data/manifest.csv --base-dir
 
 Check the generated manifest before training. Public machining datasets vary in folder naming, spreadsheet columns, and whether roughness values are repeated per parameter combination or per individual signal.
 
-## Roughness workflow
+## What This Demonstrates
 
 - Signal feature extraction for machining audio or vibration traces, including RMS, crest factor, zero-crossing rate, spectral centroid, dominant frequency, rolloff, and high/low band power.
 - A reproducible regression workflow that predicts surface roughness (`Ra`) from signal features plus optional process parameters.
@@ -63,7 +63,7 @@ Check the generated manifest before training. Public machining datasets vary in 
 - Result reporting suitable for a portfolio or engineering prototype: metrics CSV, prediction table, feature importance CSV, and plot screenshots.
 - A practical path from public raw signal data to a trainable manifest without storing large research datasets in Git.
 
-## Dataset limitations
+## Limitations and Next Steps
 
 - The committed screenshots use a synthetic demo dataset, not the full public Mendeley dataset. Use the real download before making performance claims.
 - The `.au` reader covers common Sun/NeXT AU encodings. For unusual audio encodings, install an audio library such as `soundfile` or convert files to WAV.
@@ -96,4 +96,28 @@ docs/screenshots/
 set PYTHONPATH=src
 python -m unittest discover -s tests
 python -m roughness_prediction.cli demo --output-dir data/demo --reports-dir reports/demo --screenshots-dir docs/screenshots
+```
+
+---
+
+## Benchmarks (Live — May 2026)
+
+Pipeline run against the built-in deterministic demo dataset (synthetic machining-sound generator).
+
+| Metric | Value |
+|---|---|
+| Test MAE | 0.148 µm |
+| Test R² | 0.585 |
+| Train samples | 78 signal windows |
+| Test samples | 18 signal windows |
+| Features | 7 (RMS, crest factor, ZCR, spectral centroid, dominant frequency, rolloff, high/low band power) |
+| Model | Random Forest regressor |
+
+Reproduce:
+
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+set PYTHONPATH=src   # Windows; use export on Linux/macOS
+python -m roughness_prediction.cli demo --output-dir data/demo --reports-dir reports/demo
 ```
