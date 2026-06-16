@@ -100,7 +100,7 @@ python -m roughness_prediction.cli demo --output-dir data/demo --reports-dir rep
 
 ---
 
-## Benchmarks (Live — May 2026)
+## Benchmarks
 
 Pipeline run against the built-in deterministic demo dataset (synthetic machining-sound generator).
 
