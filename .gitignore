@@ -16,3 +16,4 @@ models/
 reports/
 !docs/screenshots/
 !docs/screenshots/*.png
+.claude/
